@@ -2,7 +2,7 @@
 
 namespace estudiante;
 
-class estudiante
+class Estudiante
 {
     private $codigo;
     private $nombres;
@@ -19,11 +19,11 @@ class estudiante
 
     public function getNombres()
     {
-        return $this->$nombres;
+        return $this->nombres;
     }
     public function setNombres($value)
     {
-        $this->$nombres = $value;
+        $this->nombres = $value;
     }
     public function getApellidos()
     {

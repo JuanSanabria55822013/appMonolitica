@@ -1,6 +1,6 @@
 <?php
 
-namespace EstudianteController;
+namespace estudianteController;
 
 use baseControler\BaseController;
 use conexionDb\ConexionDbController;
@@ -16,7 +16,7 @@ class EstudianteController extends BaseController
         $sql .= '(';
         $sql .= $estudiante->getCodigo() . ',';
         $sql .= '"' . $estudiante->getNombres() . '",';
-        $sql .= '"' . $estudiante->getApellidos() . '",';
+        $sql .= '"' . $estudiante->getApellidos() . '"';
         $sql .= ')';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);

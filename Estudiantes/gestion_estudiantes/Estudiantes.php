@@ -1,8 +1,8 @@
 <?php
-require 'gestion_estudiantes/models/estudiante.php';
-require 'gestion_estudiantes/controllers/conexionDbController.php';
-require 'gestion_estudiantes/controllers/baseController.php';
-require 'gestion_estudiantes/controllers/estudiantesController.php';
+require 'models/estudiante.php';
+require 'controllers/conexionDbController.php';
+require 'controllers/baseController.php';
+require 'controllers/estudiantesController.php';
 
 use estudianteController\EstudianteController;
 
@@ -34,8 +34,8 @@ $estudiantes = $estudianteController->read();
                 foreach ($estudiantes as $estudiante) {
                     echo '<tr>';
                     echo '  <td>' . $estudiante->getCodigo() . '</td>';
-                    echo '  <td>' . $estudiante->getName() . '</td>';
-                    echo '  <td>' . $estudiante->getUsername() . '</td>';
+                    echo '  <td>' . $estudiante->getNombres() . '</td>';
+                    echo '  <td>' . $estudiante->getApellidos() . '</td>';
                     echo '  <td>';
                     echo '      <a href="views/form_estudiante.php?Codigo=' . $estudiante->getCodigo() . '">MODIFICAR</a>';
                     echo '      <a href="views/accion_borrar_estudiante.php?Codigo=' . $estudiante->getCodigo() . '">BORRAR</a>';
