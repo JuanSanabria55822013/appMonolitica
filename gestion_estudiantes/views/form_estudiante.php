@@ -20,7 +20,7 @@ $estudiante = new Estudiante();
 
 <body>
     <h1>Registrar Estudiante</h1>
-    <form action="accion_registro_estudiante" method="post">
+    <form action = "accion_registro_estudiante.php" method="post">
         <label>
             <span>Codigo:</span>
             <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCodigo(); ?>" required>
@@ -35,7 +35,6 @@ $estudiante = new Estudiante();
             <span>Apellidos:</span>
             <input type="text" name="apellidos" value="<?php echo $estudiante->getApellidos(); ?>" required>
         </label>
-        <br>
         <br>
         <button type="submit">Guardar</button>
     </form>
