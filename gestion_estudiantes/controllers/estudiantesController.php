@@ -61,7 +61,7 @@ class EstudianteController extends BaseController
     {
         $sql = 'update estudiantes set ';
         $sql .= 'nombres="' . $estudiante->getNombres() . '",';
-        $sql .= 'apellidos="' . $estudiante->getApellidos() . '",';
+        $sql .= 'apellidos="' . $estudiante->getApellidos() . '" ';
         $sql .= ' where codigo=' . $codigo;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);

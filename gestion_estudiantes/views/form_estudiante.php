@@ -8,7 +8,15 @@ use estudiante\Estudiante;
 use estudianteController\EstudianteController;
 
 $codigo = empty($_GET['codigo']) ? '' : $_GET['codigo'];
+$titulo = 'Registrar Estudiante';
+$urlAction = "accion_registro_estudiante.php";
 $estudiante = new Estudiante();
+if (!empty($codigo)) {
+    $titulo = 'Modificar Estudiante';
+    $urlAction = "accion_modificar_estudiante.php";
+    $estudianteController = new EstudianteController();
+    $estudiante = $estudianteController->readRow($codigo); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,8 +27,8 @@ $estudiante = new Estudiante();
 </head>
 
 <body>
-    <h1>Registrar Estudiante</h1>
-    <form action = "accion_registro_estudiante.php" method="post">
+    <h1><?php echo $titulo ?></h1>
+    <form action = "<?php echo $urlAction;?>" method="post">
         <label>
             <span>Codigo:</span>
             <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCodigo(); ?>" required>
