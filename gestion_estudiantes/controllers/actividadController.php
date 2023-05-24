@@ -27,9 +27,10 @@ class ActividadController extends BaseControllerActividad
         return $resultadoSQL;
     }
 
-    function read()
+    function read($codigoEstudiante)
     {
         $sql = 'select * from actividades ';
+        $sql .= 'where codigoEstudiante ='. $codigoEstudiante;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $actividades = [];

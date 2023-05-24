@@ -16,10 +16,10 @@ use actividadController\actividadController;
 
 $actividadController = new actividadController();
 
-$actividades = $actividadController->read();
-$codigo = $_GET['codigo'];
-echo($codigo);
-$urlAction = "views/Actividades/form_actividad.php?codigo=".$codigo
+$codigoEstudiante = $_GET['codigo'];
+$actividades = $actividadController->read($codigoEstudiante);
+echo($codigoEstudiante);
+$urlAction = "views/Actividades/form_actividad.php?codigo=".$codigoEstudiante
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -52,7 +52,7 @@ $urlAction = "views/Actividades/form_actividad.php?codigo=".$codigo
                     echo '  <td>' . $actividad->getCodigoEstudiante() . '</td>';
                     echo '  <td>';
                     echo '      <a href="views/Actividades/form_actividad.php?id=' . $actividad->getId() . '">MODIFICAR</a>';
-                    echo '      <a href="views/accion_borrar_actividad.php?id=' . $actividad->getId() . '">BORRAR</a>';
+                    echo '      <a href="views/Actividades/accion_borrar_actividad.php?id=' . $actividad->getId() . '">BORRAR</a>';
                     echo '  </td>';
                     echo '</tr>';
                 }
