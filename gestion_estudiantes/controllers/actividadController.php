@@ -2,9 +2,11 @@
 
 namespace actividadController;
 
-use baseControler\BaseController;
+use baseController\BaseController;
 use conexionDb\ConexionDbController;
+use estudiante\Estudiante;
 use actividad\Actividad;
+
 
 class ActividadController extends BaseController
 {
@@ -16,7 +18,8 @@ class ActividadController extends BaseController
         $sql .= '(';
         $sql .= $actividad->getId() . ',';
         $sql .= '"' . $actividad->getDescripcion() . '",';
-        $sql .= '"' . $actividad->getNota() . '"';
+        $sql .= '"' . $actividad->getNota() . '",';
+        $sql .= '"' . $actividad->getCodigoEstudiante() . '"';
         $sql .= ')';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
@@ -26,7 +29,7 @@ class ActividadController extends BaseController
 
     function read()
     {
-        $sql = 'select * from actividades';
+        $sql = 'select * from actividades ';
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $actividades = [];

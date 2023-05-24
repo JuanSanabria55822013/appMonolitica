@@ -1,6 +1,6 @@
 <?php
 
-namespace baseControler;
+namespace baseController;
 
 abstract class BaseController
 {
@@ -9,4 +9,13 @@ abstract class BaseController
     abstract function update($codigo,$model);
     abstract function delete($codigo);
     abstract function readRow($codigo);
+}
+
+abstract class BaseControllerActividad
+{
+    abstract function create($model);
+    abstract function read();
+    abstract function update($id,$model);
+    abstract function delete($id);
+    abstract function readRow($id);
 }

@@ -2,7 +2,7 @@
 
 namespace estudianteController;
 
-use baseControler\BaseController;
+use baseController\BaseController;
 use conexionDb\ConexionDbController;
 use estudiante\Estudiante;
 
