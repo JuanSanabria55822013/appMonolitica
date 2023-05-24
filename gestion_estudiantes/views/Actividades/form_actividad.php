@@ -13,17 +13,17 @@ use estudianteController\EstudianteController;
 use actividad\Actividad;
 use actividadController\ActividadController;
 
-$codigo = empty($_GET['codigo']) ? '' : $_GET['codigo'];
-
+$codigo = $_GET['codigo'];
+echo("ok". $_GET['codigo']);
 $id = empty($_GET['id']) ? '' : $_GET['id'];
 $estudianteController = new EstudianteController();
-$actividad = $estudianteController->readRow($codigo); 
 $titulo = 'Registrar actividad';
-$urlAction = "accion_registro_actividad.php?";
+$urlAction = "accion_registro_actividad.php?codigo=".$codigo;
 $actividad = new Actividad();
+$estudiante = new Estudiante();
 if (!empty($id)) {
     $titulo = 'Modificar actividad';
-    $urlAction = "accion_modificar_actividad.php";
+    $urlAction = "accion_modificar_actividad.php?codigo=".$codigo;
     $actividadController = new ActividadController();
     $actividad = $actividadController->readRow($id); 
 }

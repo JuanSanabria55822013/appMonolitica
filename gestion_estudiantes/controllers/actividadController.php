@@ -2,25 +2,25 @@
 
 namespace actividadController;
 
-use baseController\BaseController;
+use baseController\BaseControllerActividad;
 use conexionDb\ConexionDbController;
-use estudiante\Estudiante;
 use actividad\Actividad;
 
 
-class ActividadController extends BaseController
+class ActividadController extends BaseControllerActividad
 {
 
     function create($actividad)
     {
-        $sql = 'insert into actividades ';
-        $sql .= '(id,descripcion,nota) values ';
+        $sql = 'INSERT INTO actividades ';
+        $sql .= '(id, descripcion, nota, codigoEstudiante) VALUES ';
         $sql .= '(';
         $sql .= $actividad->getId() . ',';
         $sql .= '"' . $actividad->getDescripcion() . '",';
         $sql .= '"' . $actividad->getNota() . '",';
         $sql .= '"' . $actividad->getCodigoEstudiante() . '"';
-        $sql .= ')';
+        $sql .= ');';
+        echo($actividad->getCodigoEstudiante());
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $conexiondb->close();
@@ -38,6 +38,7 @@ class ActividadController extends BaseController
             $actividad->setid($registro['id']);
             $actividad->setdescripcion($registro['descripcion']);
             $actividad->setnota($registro['nota']);
+            $actividad->setCodigoEstudiante ($registro['codigoEstudiante']);
             array_push($actividades, $actividad);
         }
         $conexiondb->close();

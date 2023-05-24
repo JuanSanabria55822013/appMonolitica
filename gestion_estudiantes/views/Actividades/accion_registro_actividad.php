@@ -1,27 +1,22 @@
 <?php
 require '../../models/actividad.php';
-require '../../models/estudiante.php';
 require '../../controllers/conexionDbController.php';
 require '../../controllers/baseController.php';
 require '../../controllers/actividadController.php';
-require '../../controllers/estudiantesController.php';
-
-
-use estudiante\Estudiante;
-use estudianteController\EstudianteController;
-
 
 use actividad\Actividad;
 use actividadController\ActividadController;
 
-$estudiante = new Estudiante();
+$codigo = $_GET['codigo'];
 $actividad = new Actividad();
+echo("ok".$_GET['codigo']);
 $actividad->setId($_POST['id']);
 $actividad->setDescripcion($_POST['descripcion']);
 $actividad->setNota($_POST['nota']);
+$actividad->setCodigoEstudiante($codigo);
 
 $actividadController = new ActividadController();
-$resultado = $actividadController->create($estudiante->getCodigo(),$actividad);
+$resultado = $actividadController->create($actividad);
 if ($resultado) {
     echo '<h1>actividad registrado</h1>';
 } else {
@@ -29,4 +24,4 @@ if ($resultado) {
 }
 ?>
 <br>
-<a href="../../actividads.php">Volver al inicio</a>
+<a href="../../Estudiantes.php">Volver al inicio</a>
