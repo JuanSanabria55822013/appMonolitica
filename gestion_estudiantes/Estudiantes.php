@@ -16,30 +16,43 @@ $estudiantes = $estudianteController->read();
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="CSS/stylesTablas.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
+    </style>
 </head>
 
 <body>
+    <header>
+        <h1>LISTA DE ESTUDIANTES</h1>
+    </header>
     <main>
-        <h1>Lista de estudiantes</h1>
-        <a href="views\Estudiantes\form_estudiante.php">Registrar estudiante</a>
+        <a class = "registrar" href="views\Estudiantes\form_estudiante.php">REGISTRAR ESTUDIANTES</a>
         <table>
             <thead>
                 <tr>
                     <th>Codigo</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 foreach ($estudiantes as $estudiante) {
                     echo '<tr>';
-                    echo '  <td>' . $estudiante->getCodigo() . '</td>';
-                    echo '  <td>' . $estudiante->getNombres() . '</td>';
-                    echo '  <td>' . $estudiante->getApellidos() . '</td>';
+                    echo '  <td class = "texto">' . $estudiante->getCodigo() . '</td>';
+                    echo '  <td class = "texto">' . $estudiante->getNombres() . '</td>';
+                    echo '  <td class = "texto">' . $estudiante->getApellidos() . '</td>';
                     echo '  <td>';
                     echo '      <a href="views\Estudiantes\form_estudiante.php?codigo=' . $estudiante->getCodigo() . '">MODIFICAR</a>';
+                    echo '  </td>';
+                    echo '  <td>';
                     echo '      <a href="views\Estudiantes\accion_borrar_estudiante.php?codigo=' . $estudiante->getCodigo() . '">BORRAR</a>';
+                    echo '  </td>';
+                    echo '  <td>';
                     echo '      <a href = "Actividades.php?codigo=' . $estudiante->getCodigo() . '">NOTAS</a>'; 
                     echo '  </td>';
                     echo '</tr>';

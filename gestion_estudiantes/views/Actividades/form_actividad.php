@@ -1,31 +1,25 @@
 <?php
 require '../../models/actividad.php';
-require '../../models/estudiante.php';
 require '../../controllers/conexionDbController.php';
 require '../../controllers/baseController.php';
 require '../../controllers/actividadController.php';
-require '../../controllers/estudiantesController.php';
-
-
-use estudiante\Estudiante;
-use estudianteController\EstudianteController;
 
 use actividad\Actividad;
 use actividadController\ActividadController;
 
-$codigo = $_GET['codigo'];
-echo("ok". $_GET['codigo']);
+
 $id = empty($_GET['id']) ? '' : $_GET['id'];
-$estudianteController = new EstudianteController();
-$titulo = 'Registrar actividad';
-$urlAction = "accion_registro_actividad.php?codigo=".$codigo;
 $actividad = new Actividad();
-$estudiante = new Estudiante();
 if (!empty($id)) {
     $titulo = 'Modificar actividad';
-    $urlAction = "accion_modificar_actividad.php?codigo=".$codigo;
+    $urlAction = "accion_modificar_actividad.php?";
     $actividadController = new ActividadController();
     $actividad = $actividadController->readRow($id); 
+}else{
+    echo($_GET['codigo']);
+    $codigo = $_GET['codigo'];
+    $titulo = 'Registrar actividad';
+    $urlAction = "accion_registro_actividad.php?codigo=".$codigo;
 }
 ?>
 <!DOCTYPE html>
@@ -34,28 +28,37 @@ if (!empty($id)) {
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="..\..\CSS\styles_form.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
+    </style>
 </head>
 
 <body>
-    <h1><?php echo $titulo ?></h1>
-    <form action = "<?php echo $urlAction;?>" method="post">
-        <label>
-            <span>ID</span>
-            <input type="text" name="id" value="<?php echo $actividad->getId(); ?>" required>
-        </label>
-        <br>
-        <label>
-            <span>Descripcion</span>
-            <input type="text" name="descripcion" value="<?php echo $actividad->getDescripcion(); ?>" required>
-        </label>
-        <br>
-        <label>
-            <span>Nota:</span>
-            <input type="text" name="nota" value="<?php echo $actividad->getNota(); ?>" required>
-        </label>
-        <br>
-        <button type="submit">Guardar</button>
-    </form>
+    <header>
+        <h1><?php echo $titulo ?></h1>
+    </header>
+    <main>
+        <form action = "<?php echo $urlAction;?>" method="post">
+            <label>
+                <span>ID</span>
+                <br>
+                <input type="text" name="id" value="<?php echo $actividad->getId(); ?>" required>
+            </label>
+            <br>
+            <label>
+                <span>Descripcion</span>
+                <input type="text" name="descripcion" value="<?php echo $actividad->getDescripcion(); ?>" required>
+            </label>
+            <br>
+            <label>
+                <span>Nota:</span>
+                <input type="text" name="nota" value="<?php echo $actividad->getNota(); ?>" required>
+            </label>
+            <br>
+            <button type="submit">Guardar</button>
+        </form>
+    </main>
 </body>
 
 </html>

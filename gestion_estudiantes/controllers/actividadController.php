@@ -67,6 +67,7 @@ class ActividadController extends BaseControllerActividad
         $sql = 'update actividades set ';
         $sql .= 'descripcion="' . $actividad->getdescripcion() . '",';
         $sql .= 'nota="' . $actividad->getnota() . '",';
+        $sql.= 'codigoEstudiante="'. $actividad->getCodigoEstudiante(). '"';
         $sql .= ' where id=' . $id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
