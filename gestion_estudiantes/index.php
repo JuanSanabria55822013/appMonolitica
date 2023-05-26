@@ -16,7 +16,7 @@ $estudiantes = $estudianteController->read();
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/stylesTablas.css">
+    <link rel="stylesheet" href="views/CSS/stylesTablas.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
     </style>

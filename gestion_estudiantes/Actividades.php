@@ -28,7 +28,7 @@ $estudiante = $estudianteController->readRow($codigo);
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/stylesTablas.css">
+    <link rel="stylesheet" href="views/CSS/stylesTablas.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
     </style>
@@ -68,26 +68,42 @@ $estudiante = $estudianteController->readRow($codigo);
             </thead>
             <tbody>
                 <?php
+                $sumatoria = 0.0;
                 foreach ($actividades as $actividad) {
                     echo '<tr>';
                     echo '  <td class = "texto">' . $actividad->getId() . '</td>';
                     echo '  <td class = "texto">' . $actividad->getDescripcion() . '</td>';
-                    echo '  <td class = "texto">' . $actividad->getNota() . '</td>';
+                    echo '  <td type = "number" step = "0.1" class = "texto">' . $actividad->getNota() . '</td>';
                     echo '  <td class = "texto">' . $actividad->getCodigoEstudiante() . '</td>';
                     echo '  <td>';
-                    echo '      <a href="views/Actividades/form_actividad.php?id=' . $actividad->getId() . '">MODIFICAR</a>';
+                    echo '      <a href="views/Actividades/form_actividad.php?id=' . $actividad->getId() . '&codigo= '. $codigoEstudiante .'">MODIFICAR</a>';
                     echo '  </td>';
                     echo '  <td>';
-                    echo '      <a href="views/Actividades/accion_borrar_actividad.php?id=' . $actividad->getId() . '">BORRAR</a>';
+                    echo '      <a href="views/Actividades/accion_borrar_actividad.php?id=' . $actividad->getId() . '&codigo= '. $codigoEstudiante .'">BORRAR</a>';
                     echo '  </td>';
                     echo '</tr>';
+                    $sumatoria += $actividad->getNota(); 
+                }
+                $mensaje = "No hay notas";
+                $menPromedio = "0.0";
+                if(!empty($sumatoria)){
+                $promedio = $sumatoria/count($actividades);
+                if($promedio < 3){
+                    $mensaje = "Lo sentimos esta perdiendo la materia con ";
+                    $menPromedio = '<h2 id = "perdio">'.$promedio.'</h2>';
+                }else {
+                    $mensaje = "Felicidades esta pasando la materia con ";
+                    $menPromedio = '<h2 id = "paso">'.$promedio.'</h2>';
+                }
                 }
                 ?>
             </tbody>
         </table>
-        <br>
-        <br>
-        <a class = "registrar" href="Estudiantes.php">Volver a Lista de Estudiantes</a>
+        <div>
+            <h2 id = "mensaje"><?php echo($mensaje)?></h2>
+            <h2><?php echo($menPromedio)?></h2>
+        </div>
+        <a class = "registrar" href="index.php">VOLVER A LA LISTA DE ESTUDIANTES</a>
     </main>
 </body>
 

@@ -60,6 +60,7 @@ class EstudianteController extends BaseController
     function update($codigo, $estudiante)
     {
         $sql = 'update estudiantes set ';
+        $sql .= 'codigo="' . $estudiante->getCodigo() . '",';
         $sql .= 'nombres="' . $estudiante->getNombres() . '",';
         $sql .= 'apellidos="' . $estudiante->getApellidos() . '" ';
         $sql .= ' where codigo=' . $codigo;

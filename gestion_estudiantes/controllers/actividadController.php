@@ -13,14 +13,12 @@ class ActividadController extends BaseControllerActividad
     function create($actividad)
     {
         $sql = 'INSERT INTO actividades ';
-        $sql .= '(id, descripcion, nota, codigoEstudiante) VALUES ';
+        $sql .= '(descripcion, nota, codigoEstudiante) VALUES ';
         $sql .= '(';
-        $sql .= $actividad->getId() . ',';
         $sql .= '"' . $actividad->getDescripcion() . '",';
         $sql .= '"' . $actividad->getNota() . '",';
         $sql .= '"' . $actividad->getCodigoEstudiante() . '"';
         $sql .= ');';
-        echo($actividad->getCodigoEstudiante());
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);
         $conexiondb->close();
@@ -66,8 +64,7 @@ class ActividadController extends BaseControllerActividad
     {
         $sql = 'update actividades set ';
         $sql .= 'descripcion="' . $actividad->getdescripcion() . '",';
-        $sql .= 'nota="' . $actividad->getnota() . '",';
-        $sql.= 'codigoEstudiante="'. $actividad->getCodigoEstudiante(). '"';
+        $sql .= 'nota="' . $actividad->getnota() . '" ';
         $sql .= ' where id=' . $id;
         $conexiondb = new ConexionDbController();
         $resultadoSQL = $conexiondb->execSQL($sql);

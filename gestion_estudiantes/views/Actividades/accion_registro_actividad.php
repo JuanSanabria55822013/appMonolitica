@@ -7,8 +7,8 @@ require '../../controllers/actividadController.php';
 use actividad\Actividad;
 use actividadController\ActividadController;
 
+$codigo = $_GET['codigo'];
 $actividad = new Actividad();
-$actividad->setId($_POST['id']);
 $actividad->setDescripcion($_POST['descripcion']);
 $actividad->setNota($_POST['nota']);
 $actividad->setCodigoEstudiante($_GET['codigo']);
@@ -16,10 +16,26 @@ $actividad->setCodigoEstudiante($_GET['codigo']);
 $actividadController = new ActividadController();
 $resultado = $actividadController->create($actividad);
 if ($resultado) {
-    echo '<h1>actividad registrado</h1>';
+    $mensaje =  'ACTIVIDAD REGISTRADA';
 } else {
-    echo '<h1>No se pudo registrar el actividad</h1>';
+    $mensaje = 'NO SE PUDO REGISTRAR LA ACTIVIDAD';
 }
+$url = '../../Actividades.php?codigo='.$codigo;
 ?>
-<br>
-<a href="../../Estudiantes.php">Volver al inicio</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/styles_accion.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <h1><?php echo($mensaje) ?></h1>
+    </header>
+    <a href="<?php echo($url)?>">Volver al inicio</a>
+</body>
+</html>

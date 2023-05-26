@@ -6,13 +6,30 @@ require '../../controllers/actividadController.php';
 
 use actividadController\ActividadController;
 
+$codigo = $_GET['codigo'];
 $actividadController = new ActividadController();
 $resultado = $actividadController->delete($_GET['id']);
 if ($resultado) {
-    echo '<h1>actividad borrado</h1>';
+    $mensaje = 'ACTIVIDAD BORRADA';
 } else {
-    echo '<h1>No se pudo borrar el actividad</h1>';
+    $mensaje = 'NO SE PUDO BORRAR LA ACTIVIDAD';
 }
+$url = '../../Actividades.php?codigo='.$codigo;
 ?>
-<br>
-<a href="../../Estudiantes.php">Volver al inicio</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/styles_accion.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <h1><?php echo($mensaje) ?></h1>
+    </header>
+    <a href="<?php echo($url)?>">Volver al inicio</a>
+</body>
+</html>

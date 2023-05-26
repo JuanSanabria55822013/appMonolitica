@@ -93,3 +93,33 @@ body {
     font-weight: 500;
   }
   
+  div {
+    max-width: 30%;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px; 
+  }
+  
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+  }
+  #mensaje{
+    background-color: #333;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+  #perdio{
+    color: red;
+  }
+
+  #paso{
+    color: green;
+  }
