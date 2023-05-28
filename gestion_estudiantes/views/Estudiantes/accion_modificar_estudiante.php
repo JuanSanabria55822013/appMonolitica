@@ -15,12 +15,25 @@ $estudiante->setApellidos($_POST['apellidos']);
 $estudianteController = new EstudianteController();
 $resultado = $estudianteController->update($estudiante->getCodigo(), $estudiante);
 if ($resultado) {
-    echo '<h1>estudiante modificado</h1>';
+    $mensaje = 'ESTUDIANTE MODIFICADO';
 } else {
-    echo '<h1>No se pudo modificar el estudiante</h1>';
+    $mensaje = 'NO SE PUDO MODIFICAR EL ESTUDIANTE';
 }
 ?>
-<br>
-<a href="../../Estudiantes.php">Volver al inicio</a>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/styles_accion.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <h1><?php echo($mensaje) ?></h1>
+    </header>
+    <a href="../../index.php">Volver al inicio</a>
+</body>
+</html>

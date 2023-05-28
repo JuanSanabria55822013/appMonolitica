@@ -24,7 +24,7 @@ if (!empty($codigo)) {
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="..\..\CSS\styles_form.css">
+    <link rel="stylesheet" href="..\CSS\styles_form.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Oswald:wght@200&family=Russo+One&display=swap');
     </style>
